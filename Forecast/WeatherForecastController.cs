@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
-namespace WebApplication1.Controllers
+namespace WeatherApp.Forecast
 {
     [Authorize]
     [ApiController]
