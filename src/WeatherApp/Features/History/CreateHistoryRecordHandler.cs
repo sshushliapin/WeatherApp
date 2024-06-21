@@ -6,12 +6,7 @@ using WeatherApp.Entities;
 
 namespace WeatherApp.Features.History;
 
-public class CreateHistoryRecordRequest : IRequest<Result>
-{
-    public int TemperatureC { get; set; }
-
-    public string? Summary { get; set; }
-}
+public record CreateHistoryRecordRequest(int TemperatureC, string? Summary) : IRequest<Result>;
 
 public class CreateHistoryRecordValidator : AbstractValidator<CreateHistoryRecordRequest>
 {
