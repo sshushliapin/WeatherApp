@@ -25,11 +25,12 @@ public static class CreateHistoryRecord
         }
     }
 
-    internal sealed class Handler(AppDbContext dbContext, IValidator<CreateHistoryRecordRequest> validator) : IRequestHandler<CreateHistoryRecordRequest, Result>
+    public class Handler(AppDbContext dbContext, IValidator<CreateHistoryRecordRequest> validator)
+        : IRequestHandler<CreateHistoryRecordRequest, Result>
     {
         public async Task<Result> Handle(CreateHistoryRecordRequest request, CancellationToken cancellationToken)
         {
-            var validationResult = validator.Validate(request);
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
             if (!validationResult.IsValid)
             {
                 return Result.Failure(string.Join(Environment.NewLine, validationResult.Errors));
