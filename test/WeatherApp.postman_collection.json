@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "fda73c3d-7195-4b11-ac9b-2265b4d238b0",
+		"name": "WeatherApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "943739"
+	},
+	"item": [
+		{
+			"name": "https://login.microsoftonline.com/51cd913d-886c-4d63-ac5a-dad841478879/oauth2/v2.0/token\n",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"pm.globals.set(\"access_token\", jsonData.access_token);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "e59638c7-9ddd-422b-957d-e311a078f09e",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "api://e59638c7-9ddd-422b-957d-e311a078f09e/.default",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/token",
+					"protocol": "https",
+					"host": [
+						"login",
+						"microsoftonline",
+						"com"
+					],
+					"path": [
+						"{51cd913d-886c-4d63-ac5a-dad841478879}",
+						"oauth2",
+						"v2.0",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7221/weatherforecast",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/authorize",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "api://e59638c7-9ddd-422b-957d-e311a078f09e/access_as_user",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "e59638c7-9ddd-422b-957d-e311a078f09e",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7221/weatherforecast",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7221",
+					"path": [
+						"weatherforecast"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7221/weatherhistory",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/authorize",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "api://e59638c7-9ddd-422b-957d-e311a078f09e/access_as_user",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "e59638c7-9ddd-422b-957d-e311a078f09e",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7221/weatherhistory",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7221",
+					"path": [
+						"weatherhistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7221/weatherhistory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"randomTemp\", _.random (-20,40));"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/authorize",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "api://e59638c7-9ddd-422b-957d-e311a078f09e/access_as_user",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "e59638c7-9ddd-422b-957d-e311a078f09e",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"temperatureC\": {{randomTemp}},\r\n    \"summary\": \"{{$randomWord}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7221/weatherhistory",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7221",
+					"path": [
+						"weatherhistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:7221/healthz",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/token",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "https://login.microsoftonline.com/{51cd913d-886c-4d63-ac5a-dad841478879}/oauth2/v2.0/authorize",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "api://e59638c7-9ddd-422b-957d-e311a078f09e/access_as_user",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "e59638c7-9ddd-422b-957d-e311a078f09e",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "Bearer",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": true,
+							"type": "boolean"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7221/healthz",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7221",
+					"path": [
+						"healthz"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "randomTemp",
+			"value": ""
+		}
+	]
+}
