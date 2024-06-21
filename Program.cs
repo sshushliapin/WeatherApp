@@ -1,6 +1,7 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
-using WeatherApp.Features.History;
+using WeatherApp.Database;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddHealthChecks();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<WeatherHistoryDbContext>();
+builder.Services.AddScoped<AppDbContext>();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
 
 var app = builder.Build();
 

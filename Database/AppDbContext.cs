@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WeatherApp.Entities;
 
-namespace WeatherApp.Features.History;
+namespace WeatherApp.Database;
 
-public class WeatherHistoryDbContext : DbContext
+public class AppDbContext : DbContext
 {
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
