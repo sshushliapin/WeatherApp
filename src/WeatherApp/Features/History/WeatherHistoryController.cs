@@ -12,15 +12,15 @@ namespace WeatherApp.Features.History;
 public class WeatherHistoryController(IMediator mediator) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherHistory")]
-    public async Task<IActionResult> Get(GetHistoryRecord.GetHistoryRecordRequest? request)
+    public async Task<IActionResult> Get(GetHistoryRecordRequest? request)
     {
-        request ??= new GetHistoryRecord.GetHistoryRecordRequest();
+        request ??= new GetHistoryRecordRequest();
         var result = await mediator.Send(request);
         return Ok(result);
     }
 
     [HttpPost(Name = "AddWeatherHistoryRecord")]
-    public async Task<IActionResult> Post(CreateHistoryRecord.CreateHistoryRecordRequest request)
+    public async Task<IActionResult> Post(CreateHistoryRecordRequest request)
     {
         var result = await mediator.Send(request);
         if (result.IsFailure)

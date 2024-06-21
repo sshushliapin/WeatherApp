@@ -13,7 +13,7 @@ public class WeatherHistoryControllerTest
     public async Task PostWithInvalidRequestReturnsBadRequest(
         [Frozen] IMediator mediatr,
         [NoAutoProperties] WeatherHistoryController sut,
-        CreateHistoryRecord.CreateHistoryRecordRequest request,
+        CreateHistoryRecordRequest request,
         string error)
     {
         mediatr.Send(request).Returns(Result.Failure(error));
@@ -24,7 +24,7 @@ public class WeatherHistoryControllerTest
     [Theory, AutoNSubstituteData]
     public async Task PostWithValidRequestReturnsCreated(
         [NoAutoProperties] WeatherHistoryController sut,
-        CreateHistoryRecord.CreateHistoryRecordRequest request)
+        CreateHistoryRecordRequest request)
     {
         var result = await sut.Post(request);
         Assert.IsType<CreatedResult>(result);
