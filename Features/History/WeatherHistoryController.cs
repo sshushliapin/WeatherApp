@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
-namespace WeatherApp.History;
+namespace WeatherApp.Features.History;
 
 [Authorize]
 [ApiController]
@@ -11,10 +11,10 @@ namespace WeatherApp.History;
 public class WeatherHistoryController(WeatherHistoryDbContext dbContext) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherHistory")]
-    public IEnumerable<WeatherHistoryRecordDto> Get()
+    public IEnumerable<HistoryRecordResponse> Get()
     {
         return dbContext.WeatherHistory.Select(x =>
-            new WeatherHistoryRecordDto
+            new HistoryRecordResponse
             {
                 Date = x.Date,
                 TemperatureC = x.TemperatureC,
@@ -23,7 +23,7 @@ public class WeatherHistoryController(WeatherHistoryDbContext dbContext) : Contr
     }
 
     [HttpPost(Name = "AddWeatherHistoryRecord")]
-    public async Task<CreatedResult> Post(WeatherHistoryRecordDto newRecord)
+    public async Task<CreatedResult> Post(CreateHistoryRecordRequest newRecord)
     {
         await dbContext.WeatherHistory.AddAsync(
             new WeatherHistoryRecord
@@ -37,11 +37,17 @@ public class WeatherHistoryController(WeatherHistoryDbContext dbContext) : Contr
         return Created();
     }
 }
-
-public class WeatherHistoryRecordDto
+public class HistoryRecordResponse
 {
     public DateOnly Date { get; set; }
 
+    public int TemperatureC { get; set; }
+
+    public string? Summary { get; set; }
+}
+
+public class CreateHistoryRecordRequest
+{
     public int TemperatureC { get; set; }
 
     public string? Summary { get; set; }

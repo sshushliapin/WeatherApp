@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
-using WeatherApp.History;
+using WeatherApp.Features.History;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace WeatherApp.History;
+namespace WeatherApp.Features.History;
 
 public class WeatherHistoryDbContext : DbContext
 {

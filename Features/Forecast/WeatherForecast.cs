@@ -1,4 +1,4 @@
-namespace WeatherApp.Forecast
+namespace WeatherApp.Features.Forecast
 {
     public class WeatherForecast
     {

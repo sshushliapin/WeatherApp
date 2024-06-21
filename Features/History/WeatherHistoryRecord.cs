@@ -1,4 +1,4 @@
-﻿namespace WeatherApp.History;
+﻿namespace WeatherApp.Features.History;
 
 public class WeatherHistoryRecord
 {
