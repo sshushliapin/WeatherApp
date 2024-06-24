@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\WeatherApp.Domain\WeatherApp.Domain.csproj" />
+	  <ProjectReference Include="..\..\src\WeatherApp.Domain\WeatherApp.Domain.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

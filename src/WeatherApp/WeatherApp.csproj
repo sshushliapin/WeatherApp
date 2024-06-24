@@ -23,8 +23,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\WeatherApp.Infrastructure\WeatherApp.Infrastructure.csproj" />
-		<ProjectReference Include="..\..\WeatherApp.Services\WeatherApp.Services.csproj" />
+	  <ProjectReference Include="..\WeatherApp.Domain\WeatherApp.Domain.csproj" />
+	  <ProjectReference Include="..\WeatherApp.Infrastructure\WeatherApp.Infrastructure.csproj" />
+	  <ProjectReference Include="..\WeatherApp.Services\WeatherApp.Services.csproj" />
 	</ItemGroup>
 
 </Project>
