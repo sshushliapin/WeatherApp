@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp", "src\WeatherAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherApp.Tests", "test\WeatherApp.Tests\WeatherApp.Tests.csproj", "{C39EE9B4-B188-4002-B545-023CC2EBA09F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Domain", "WeatherApp.Domain\WeatherApp.Domain.csproj", "{12246324-E85A-4056-A0C7-502792B2E32D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Services", "WeatherApp.Services\WeatherApp.Services.csproj", "{B81F6E33-C005-4609-847D-5ABE1C77EB7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherApp.Domain.Tests", "WeatherApp.Domain.Tests\WeatherApp.Domain.Tests.csproj", "{E2A4D6FC-97E3-4E9B-AB81-55677B450C24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{C39EE9B4-B188-4002-B545-023CC2EBA09F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C39EE9B4-B188-4002-B545-023CC2EBA09F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C39EE9B4-B188-4002-B545-023CC2EBA09F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12246324-E85A-4056-A0C7-502792B2E32D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12246324-E85A-4056-A0C7-502792B2E32D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12246324-E85A-4056-A0C7-502792B2E32D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12246324-E85A-4056-A0C7-502792B2E32D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B81F6E33-C005-4609-847D-5ABE1C77EB7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B81F6E33-C005-4609-847D-5ABE1C77EB7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B81F6E33-C005-4609-847D-5ABE1C77EB7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B81F6E33-C005-4609-847D-5ABE1C77EB7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2A4D6FC-97E3-4E9B-AB81-55677B450C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2A4D6FC-97E3-4E9B-AB81-55677B450C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2A4D6FC-97E3-4E9B-AB81-55677B450C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2A4D6FC-97E3-4E9B-AB81-55677B450C24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

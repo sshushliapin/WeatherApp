@@ -1,37 +1,28 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
+using WeatherApp.Domain.Forecast;
+using WeatherApp.Services.Forecast;
 
 namespace WeatherApp.Features.Forecast
 {
+    public record GetWeatherForecastResponse(DateOnly Date, string Temperature, string Summary);
+
     [Authorize]
     [ApiController]
     [Route("[controller]")]
     [RequiredScope(RequiredScopesConfigurationKey = "AzureAd:Scopes")]
-    public class WeatherForecastController : ControllerBase
+    public class WeatherForecastController(IForecastService forecastService) : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
+        [HttpGet(Name = "GetWeatherForecast")]
+        public IEnumerable<GetWeatherForecastResponse> Get()
         {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        {
-            _logger = logger;
+            return forecastService.GetWeatherForecast().Select(ToGetWeatherForecastResponse);
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        private GetWeatherForecastResponse ToGetWeatherForecastResponse(WeatherForecast forecast)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            return new GetWeatherForecastResponse(forecast.Date, forecast.Temperature.ToString(), forecast.Summary);
         }
     }
 }

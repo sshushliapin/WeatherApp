@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 using WeatherApp.Database;
+using WeatherApp.Services.Forecast;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -54,6 +55,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddScoped<AppDbContext>();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
+
+builder.Services.AddScoped<IForecastService, ForecastService>();
 
 var app = builder.Build();
 
