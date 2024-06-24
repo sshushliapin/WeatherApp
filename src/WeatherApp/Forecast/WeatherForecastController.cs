@@ -4,7 +4,7 @@ using Microsoft.Identity.Web.Resource;
 using WeatherApp.Domain.Forecast;
 using WeatherApp.Services.Forecast;
 
-namespace WeatherApp.Features.Forecast
+namespace WeatherApp.Forecast
 {
     public record GetWeatherForecastResponse(DateOnly Date, string Temperature, string Summary);
 

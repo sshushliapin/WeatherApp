@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WeatherApp.Entities;
+using WeatherApp.Domain.History;
 
-namespace WeatherApp.Database;
+namespace WeatherApp.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
@@ -10,5 +10,5 @@ public class AppDbContext : DbContext
         optionsBuilder.UseInMemoryDatabase("WeatherHistory");
     }
 
-    public DbSet<WeatherHistoryRecord> WeatherHistory { get; set; }
+    public DbSet<HistoryRecord> WeatherHistory { get; set; }
 }

@@ -1,9 +1,10 @@
-﻿using MediatR;
+﻿using System.ComponentModel.DataAnnotations;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Web.Resource;
 
-namespace WeatherApp.Features.History;
+namespace WeatherApp.History;
 
 [Authorize]
 [ApiController]
@@ -12,15 +13,15 @@ namespace WeatherApp.Features.History;
 public class WeatherHistoryController(IMediator mediator) : ControllerBase
 {
     [HttpGet(Name = "GetWeatherHistory")]
-    public async Task<IActionResult> Get(GetHistoryRecordRequest? request)
+    public async Task<IActionResult> Get()
     {
-        request ??= new GetHistoryRecordRequest();
+        var request = new GetHistoryRecordRequest();
         var result = await mediator.Send(request);
         return Ok(result);
     }
 
     [HttpPost(Name = "AddWeatherHistoryRecord")]
-    public async Task<IActionResult> Post(CreateHistoryRecordRequest request)
+    public async Task<IActionResult> Post([Required] CreateHistoryRecordRequest request)
     {
         var result = await mediator.Send(request);
         if (result.IsFailure)

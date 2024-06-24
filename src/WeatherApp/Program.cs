@@ -2,7 +2,9 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
-using WeatherApp.Database;
+using WeatherApp.Domain.History;
+using WeatherApp.Infrastructure.Data;
+using WeatherApp.Infrastructure.History;
 using WeatherApp.Services.Forecast;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -57,6 +59,7 @@ builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddMediatR(config => config.RegisterServicesFromAssemblyContaining<Program>());
 
 builder.Services.AddScoped<IForecastService, ForecastService>();
+builder.Services.AddScoped<IHistoryRepository, HistoryRepository>();
 
 var app = builder.Build();
 

@@ -3,9 +3,9 @@ using CSharpFunctionalExtensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
-using WeatherApp.Features.History;
+using WeatherApp.History;
 
-namespace WeatherApp.Tests.Features.History;
+namespace WeatherApp.Tests.History;
 
 public class WeatherHistoryControllerTest
 {
@@ -13,9 +13,9 @@ public class WeatherHistoryControllerTest
     public async Task PostWithInvalidRequestReturnsBadRequest(
         [Frozen] IMediator mediatr,
         [NoAutoProperties] WeatherHistoryController sut,
-        CreateHistoryRecordRequest request,
         string error)
     {
+        var request = new CreateHistoryRecordRequest();
         mediatr.Send(request).Returns(Result.Failure(error));
         var result = await sut.Post(request);
         Assert.IsType<BadRequestObjectResult>(result);
@@ -23,9 +23,9 @@ public class WeatherHistoryControllerTest
 
     [Theory, AutoNSubstituteData]
     public async Task PostWithValidRequestReturnsCreated(
-        [NoAutoProperties] WeatherHistoryController sut,
-        CreateHistoryRecordRequest request)
+        [NoAutoProperties] WeatherHistoryController sut)
     {
+        var request = new CreateHistoryRecordRequest();
         var result = await sut.Post(request);
         Assert.IsType<CreatedResult>(result);
     }
